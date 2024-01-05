@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <menuitem id="kororo_survey_parent_menuitem" name="Surveys">
+        <menuitem id="kororo_survey_first_level_menu" name="Survey Monkey">
+          <!-- <menuitem id="kororo_survey_sub_first_level_menu" action="kororo_survey_monkey."/> -->
+        </menuitem>
+    </menuitem>
+
+</odoo>
