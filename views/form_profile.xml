@@ -3,37 +3,24 @@
 <odoo>
 
     <record id="survey_monkey_form_view_id" model="ir.ui.view">
-
       <field name="name">survey_monkey_form_view_id</field>
-      <field name="model">survey.monkey.profile</field>
+      <field name="model">survey.monkey</field>
       <field name="arch" type="xml">
 
-        <form class="o_survey_form" string="User Profile" create="false" edit="false">
+        <form class="o_survey_form" string="User Profile" create="false" delete="false">
                 <sheet>
-                    <field name="username" widget="image" class="oe_avatar"/>
-                    <div class="oe_title" style="width: 100%;">
-                        <h1>
-                            <field name="email" options="{'line_breaks': False}" widget="text" placeholder="e.g. Email Address" readonly="1"/>
-                        </h1>
-                    </div>
+                      <field name="user_data" widget="many2one_avatar_user" class="oe_avatar" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,}"/>
+                      <div class="oe_title" style="width: 100%;">
+                          <h1>
+                              <field name="user_data" options="{'line_breaks': False}" widget="many2one" placeholder="e.g. Your Name"/>
+                          </h1>
+                      </div>
 
                     <notebook>
-
                         <page string="Profile" name="profiles">
-                          <tree>
-                            <field name="profile_id" readonly="1"/>
-                            <field name="username" readonly="1"/>
-                            <field name="first_name" readonly="1"/>
-                            <field name="last_name" readonly="1"/>
-                            <field name="language" readonly="1"/>
-                            <field name="email" readonly="1"/>
-                            <field name="email_verified" readonly="1"/>
-                            <field name="account_type" readonly="1"/>
-                            <field name="date_created" readonly="1"/>
-                            <field name="date_last_login" readonly="1"/>
-                          </tree>
+                            <field name="profile"/>
                         </page>
-
+                       
                     </notebook>
                 </sheet>
 

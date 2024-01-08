@@ -7,32 +7,20 @@
       <field name="res_model">survey.monkey</field>
   </record>
 
+
+  <record id="action_view_survey_monkey" model="ir.actions.act_window.view">
+      <field name="sequence" eval="1"/>
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="kororo_survey_monkey.survey_monkey_token_tree_view_id"/>
+      <field name="act_window_id" ref="kororo_survey_monkey.menu_action_survey_monkey"/>
+  </record>
+
  <record id="actions_kanban_survey_monkey" model="ir.actions.act_window.view">
-    <field name="sequence" eval="1"/>
+    <field name="sequence" eval="2"/>
     <field name="view_mode">kanban</field>
     <field name="view_id" ref="kororo_survey_monkey.survey_monkey_kanban_view_id"/>
     <field name="act_window_id" ref="kororo_survey_monkey.menu_action_survey_monkey"/>
   </record>
 
-  <record id="action_view_survey_monkey" model="ir.actions.act_window.view">
-      <field name="sequence" eval="2"/>
-      <field name="view_mode">tree</field>
-      <field name="view_id" ref="kororo_survey_monkey.survey_monkey_tree_view_id"/>
-      <field name="act_window_id" ref="kororo_survey_monkey.menu_action_survey_monkey"/>
-  </record>
   
-
-   <record id="menu_action_profile_survey_monkey" model="ir.actions.act_window">
-      <field name="name">Survey Monkey</field>
-      <field name="res_model">survey.monkey.profile</field>
-  </record>
-
-  <record id="action_get_profile_survey_monkey" model="ir.actions.act_window.view">
-      <field name="sequence" eval="1"/>
-      <field name="view_mode">form</field>
-      <field name="view_id" ref="kororo_survey_monkey.survey_monkey_form_view_id"/>
-      <field name="act_window_id" ref="kororo_survey_monkey.menu_action_profile_survey_monkey"/>
-  </record>
-
-
 </odoo>

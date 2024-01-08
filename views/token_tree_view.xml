@@ -2,14 +2,14 @@
 
 <odoo>
 
-    <record id="survey_monkey_tree_view_id" model="ir.ui.view">
+    <record id="survey_monkey_token_tree_view_id" model="ir.ui.view">
 
       <field name="name">survey_monkey_tree_view_id</field>
       <field name="model">survey.monkey</field>
       <field name="arch" type="xml">    
-        <tree editable="bottom">
-          <field name="user"/>
+        <tree>
           <field name="access_token"/>
+          <field name="user_data" widget="many2one_avatar_user"/>
         </tree>
       </field>
     </record>

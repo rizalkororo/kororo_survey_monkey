@@ -81,13 +81,14 @@ class SuveyMonkeyLoginApi(odooHttp.Controller):
                 # check if previous token exist in database.
                 # if exist update db with new generated token
                 data_exist = survey_monkey_model.search(
-                    [('user', '=', request.uid)])
+                    [('user_data', '=', request.uid)])
                 if data_exist:
                     data_exist.access_token = access_json['access_token']
 
                 # else create and save new token
                 else:
                     data = {
+                        'user_data': request.uid,
                         'access_token': access_json['access_token']
                     }
 
@@ -95,10 +96,7 @@ class SuveyMonkeyLoginApi(odooHttp.Controller):
 
                 # after creating token and store it in odoo db
                 # do some action to save it and get user profile
-                response = requests.get(self._CURRENT_PROFILE_URL)
-
-                if response.status_code == 200:
-                    return redirect(self._HOME_URL + 'web')
+                return redirect(self._CURRENT_PROFILE_URL)
 
             raise UserError("Authentication to Survey Monkey is failed.")
 
@@ -111,7 +109,11 @@ class SuveyMonkeyLoginApi(odooHttp.Controller):
         from surveymonkey
         """
         token = request.env['survey.monkey'].search(
-            [('user.id', '=', request.uid)]).access_token
+            [('user_data', '=', request.uid)]).access_token
+
+        # initialize survey monkey db
+        survey_monkey = request.env['survey.monkey'].search(
+            [('user_data', '=', request.uid)])
 
         # initialize survey monkey profile db
         profile = request.env['survey.monkey.profile']
@@ -134,9 +136,17 @@ class SuveyMonkeyLoginApi(odooHttp.Controller):
             json_data.pop('sso_connections')
             json_data.pop('features')
             json_data.pop('href')
+            json_data['survey_ids'] = survey_monkey.id
+
+            # check if current user profile is already exists
+            # and return it
+            profile_exist = len(profile.search(
+                [('survey_ids', '=', survey_monkey.id)])) > 0
+            if profile_exist:
+                return redirect(self._HOME_URL + 'web')
 
             # save in database
             profile.create(json_data)
-            return
+            return redirect(self._HOME_URL + 'web')
 
         raise exceptions.UserError("You have no access right")

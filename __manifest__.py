@@ -11,9 +11,10 @@
     # data files always loaded at installation
     'data': [
         'security/ir.model.access.csv',
-        'views/tree_view.xml',
-        'views/kanban_view.xml',
+        'views/profile_tree_view.xml',
+        'views/token_tree_view.xml',
         'views/form_profile.xml',
+        'views/kanban_view.xml',
         'views/template.xml',
         'views/menu_action.xml',
         'views/menu.xml',

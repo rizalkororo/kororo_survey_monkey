@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+    <record id="survey_monkey_tree_view" model="ir.ui.view">
+
+      <field name="name">survey_monkey_tree_view</field>
+      <field name="model">survey.monkey.profile</field>
+      <field name="arch" type="xml">    
+        <tree editable="bottom" create="false" edit="false" delete="false">
+            <field name="sequence" widget="handle"/>
+            <field name="profile_id"/>
+            <field name="username"/>
+            <field name="first_name"/>
+            <field name="last_name"/>
+            <field name="language"/>
+            <field name="email"/>
+            <field name="email_verified"/>
+            <field name="account_type"/>
+            <field name="date_created"/>
+            <field name="date_last_login"/>
+        </tree>
+      </field>
+    </record>
+
+
+</odoo>
