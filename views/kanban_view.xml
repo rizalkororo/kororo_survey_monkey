@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+  <record id="survey_monkey_kanban_view_id" model="ir.ui.view">
+
+      <field name="name">survey_monkey_tree_view_id</field>
+      <field name="model">survey.monkey</field>
+      <field name="arch" type="xml">    
+        <kanban create="0">
+           <templates>
+              <t t-name="kanban-box">
+              <div class="o_survey_kanban_card_ungrouped row mx-0">
+                  <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="user_data"/>
+                  <div class="col-lg-2 col-sm-8 py-0 my-2 my-lg-0 col-12">
+                      <div class="d-flex flex-grow-1 flex-column my-0 my-lg-2">
+                          <span class="fw-bold"><field name="user_data"/></span>
+                          <span t-if="!selection_mode" class="d-flex align-items-center">
+                              <field name="user_data" widget="many2one_avatar_user" options="{'display_avatar_name': True}"/>
+                                  <span class="mx-1">-</span>
+                          </span>
+                          
+                      </div>
+                  </div>
+              </div>
+              <button name="retrieve_surveymonkey" string="Refresh Token" type="object" class="oe_highlight" icon="oi-launch"/>
+              </t>
+           </templates>
+        </kanban>
+      </field>
+       
+  </record>
+</odoo>

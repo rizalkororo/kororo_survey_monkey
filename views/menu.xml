@@ -2,10 +2,24 @@
 
 <odoo>
 
-    <menuitem id="kororo_survey_parent_menuitem" name="Surveys">
-        <menuitem id="kororo_survey_first_level_menu" name="Survey Monkey">
-          <!-- <menuitem id="kororo_survey_sub_first_level_menu" action="kororo_survey_monkey."/> -->
-        </menuitem>
-    </menuitem>
+    <menuitem
+        id="survey_monkey_menu_root"
+        name="Survey Monkey"
+        web_icon="kororo_survey_monkey,static/description/icon.png"/>
+
+    <menuitem
+        id="menu_home"
+        name="Home"
+        parent="kororo_survey_monkey.survey_monkey_menu_root"
+        action="kororo_survey_monkey.menu_action_survey_monkey"
+        sequence="1"/>
+
+    <!-- <menuitem
+        id="menu_profile"
+        name="Profile"
+        parent="kororo_survey_monkey.survey_monkey_menu_root"
+        action="kororo_survey_monkey.menu_action_profile_survey_monkey"
+        sequence="2"/> -->
+
 
 </odoo>
